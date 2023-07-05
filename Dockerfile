@@ -1,5 +1,7 @@
 FROM alpine:3.15 as builder
-
+ENV http_proxy=http://proxy.esl.cisco.com:80
+ENV https_proxy=http://proxy.esl.cisco.com:80
+ENV no_proxy="127.0.0.1,171.70.36.90,localhost,earth.tail-f.com,tail-f.com,cisco.com,dockerhub.cisco.com,11.48.57.112,engci-maven.cisco.com,engci-maven-master.cisco.com"
 ARG VERSION=7.20.0
 ARG DISTRO=tomcat
 ARG SNAPSHOT=true

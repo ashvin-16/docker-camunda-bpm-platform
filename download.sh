@@ -38,10 +38,10 @@ ARTIFACT_GROUP="org.camunda.bpm.${GROUP}"
 # Download distro from nexus
 
 PROXY=""
-if [ -n "http://proxy.esl.cisco.com" ] ; then
+if [ -n "proxy.esl.cisco.com" ] ; then
 	PROXY="-DproxySet=true"
-	PROXY="$PROXY -Dhttp.proxyHost=http://proxy.esl.cisco.com"
-	PROXY="$PROXY -Dhttps.proxyHost=http://proxy.esl.cisco.com"
+	PROXY="$PROXY -Dhttp.proxyHost=proxy.esl.cisco.com"
+	PROXY="$PROXY -Dhttps.proxyHost=proxy.esl.cisco.com"
 	if [ -z "80" ] ; then
 		echo "ERROR: MAVEN_PROXY_PORT must be set when MAVEN_PROXY_HOST is set"
 		exit 1

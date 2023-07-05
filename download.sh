@@ -46,8 +46,8 @@ if [ -n "http://proxy.esl.cisco.com" ] ; then
 		echo "ERROR: MAVEN_PROXY_PORT must be set when MAVEN_PROXY_HOST is set"
 		exit 1
 	fi
-	PROXY="$PROXY -Dhttp.proxyPort=80"
-	PROXY="$PROXY -Dhttps.proxyPort=80"
+	PROXY="$PROXY -Dhttp.proxyPort=8080"
+	PROXY="$PROXY -Dhttps.proxyPort=8080"
 	echo "PROXY set Maven proxyHost and proxyPort"
 	# if [ -n "$MAVEN_PROXY_USER" ] ; then
 	# 	PROXY="$PROXY -Dhttp.proxyUser=$MAVEN_PROXY_USER"

@@ -24,7 +24,7 @@ RUN apk add --no-cache \
         tar \
         wget \
         xmlstarlet
-RUN apt-get install -y ca-certificates-java && update-ca-certificates -f
+RUN apk add -y ca-certificates-java && update-ca-certificates -f
 
 COPY settings.xml download.sh camunda-run.sh camunda-tomcat.sh camunda-wildfly.sh  /tmp/
 

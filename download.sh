@@ -37,7 +37,7 @@ ARTIFACT_GROUP="org.camunda.bpm.${GROUP}"
 
 # Download distro from nexus
 
-PROXY="http://proxy.esl.cisco.com"
+PROXY=""
 if [ -n "http://proxy.esl.cisco.com" ] ; then
 	PROXY="-DproxySet=true"
 	PROXY="$PROXY -Dhttp.proxyHost=http://proxy.esl.cisco.com"

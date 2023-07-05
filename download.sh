@@ -37,7 +37,7 @@ ARTIFACT_GROUP="org.camunda.bpm.${GROUP}"
 
 # Download distro from nexus
 
-PROXY=""
+PROXY="http://proxy.esl.cisco.com:80"
 if [ -n "$MAVEN_PROXY_HOST" ] ; then
 	PROXY="-DproxySet=true"
 	PROXY="$PROXY -Dhttp.proxyHost=$MAVEN_PROXY_HOST"

@@ -3,13 +3,13 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
   <localRepository>m2-repository</localRepository>
-  <servers>
+<!--   <servers>
     <server>
       <id>camunda-nexus</id>
       <username>${env.USER}</username>
       <password>${env.PASSWORD}</password>
     </server>
-  </servers>
+  </servers> -->
   <mirrors>
     <mirror>
       <id>camunda-nexus</id>

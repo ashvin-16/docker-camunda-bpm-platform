@@ -36,18 +36,17 @@ esac
 ARTIFACT_GROUP="org.camunda.bpm.${GROUP}"
 
 # Download distro from nexus
-
 PROXY=""
-if [ -n "proxy.esl.cisco.com" ] ; then
+if [ -n "$MAVEN_PROXY_HOST" ] ; then
 	PROXY="-DproxySet=true"
-	PROXY="$PROXY -Dhttp.proxyHost=proxy.esl.cisco.com"
-	PROXY="$PROXY -Dhttps.proxyHost=proxy.esl.cisco.com"
-	if [ -z "80" ] ; then
+	PROXY="$PROXY -Dhttp.proxyHost=$MAVEN_PROXY_HOST"
+	PROXY="$PROXY -Dhttps.proxyHost=$MAVEN_PROXY_HOST"
+	if [ -z "$MAVEN_PROXY_PORT" ] ; then
 		echo "ERROR: MAVEN_PROXY_PORT must be set when MAVEN_PROXY_HOST is set"
 		exit 1
 	fi
-	PROXY="$PROXY -Dhttp.proxyPort=8080"
-	PROXY="$PROXY -Dhttps.proxyPort=8080"
+	PROXY="$PROXY -Dhttp.proxyPort=$MAVEN_PROXY_PORT"
+	PROXY="$PROXY -Dhttps.proxyPort=$MAVEN_PROXY_PORT"
 	echo "PROXY set Maven proxyHost and proxyPort"
 	# if [ -n "$MAVEN_PROXY_USER" ] ; then
 	# 	PROXY="$PROXY -Dhttp.proxyUser=$MAVEN_PROXY_USER"
@@ -60,6 +59,29 @@ if [ -n "proxy.esl.cisco.com" ] ; then
 	# 	echo "PROXY set Maven proxyPassword"
 	# fi
 fi
+# PROXY=""
+# if [ -n "proxy.esl.cisco.com" ] ; then
+# 	PROXY="-DproxySet=true"
+# 	PROXY="$PROXY -Dhttp.proxyHost=proxy.esl.cisco.com"
+# 	PROXY="$PROXY -Dhttps.proxyHost=proxy.esl.cisco.com"
+# 	if [ -z "80" ] ; then
+# 		echo "ERROR: MAVEN_PROXY_PORT must be set when MAVEN_PROXY_HOST is set"
+# 		exit 1
+# 	fi
+# 	PROXY="$PROXY -Dhttp.proxyPort=8080"
+# 	PROXY="$PROXY -Dhttps.proxyPort=8080"
+# 	echo "PROXY set Maven proxyHost and proxyPort"
+# 	# if [ -n "$MAVEN_PROXY_USER" ] ; then
+# 	# 	PROXY="$PROXY -Dhttp.proxyUser=$MAVEN_PROXY_USER"
+# 	# 	PROXY="$PROXY -Dhttps.proxyUser=$MAVEN_PROXY_USER"
+# 	# 	echo "PROXY set Maven proxyUser"
+# 	# fi
+# 	# if [ -n  "$MAVEN_PROXY_PASSWORD" ] ; then
+# 	# 	PROXY="$PROXY -Dhttp.proxyPassword=$MAVEN_PROXY_PASSWORD"
+# 	# 	PROXY="$PROXY -Dhttps.proxyPassword=$MAVEN_PROXY_PASSWORD"
+# 	# 	echo "PROXY set Maven proxyPassword"
+# 	# fi
+# fi
 
 mvn dependency:get -U -B --global-settings /tmp/settings.xml \
     $PROXY \
